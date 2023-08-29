@@ -1,4 +1,4 @@
-# copied from GWToolbox, cause too lazy. All credits go there.
+# copied parts from GWToolbox.
 name: CMake
 
 on: [push]
@@ -36,7 +36,11 @@ jobs:
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: cmake --build . --config RelWithDebInfo
     
-    - name: Save output
-      uses: actions/upload-artifact@v2
+    - name: Release
+      uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        path: ${{runner.workspace}}/GW-BlockScrims/bin/RelWithDebInfo/
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        prerelease: true
+        files: |
+          ${{runner.workspace}}/GW-BlockScrims/bin/RelWithDebInfo/
+        
