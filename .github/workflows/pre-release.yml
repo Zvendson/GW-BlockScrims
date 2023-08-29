@@ -38,11 +38,9 @@ jobs:
     
     - name: Release
       uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
       with:
-        env: 
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        with:
-          files: |
-            ${{runner.workspace}}/GW-BlockScrims/bin/RelWithDebInfo/*
-            ${{runner.workspace}}/GW-BlockScrims/injector.au3
+        files: |
+          ${{runner.workspace}}/GW-BlockScrims/bin/RelWithDebInfo/*
+          ${{runner.workspace}}/GW-BlockScrims/injector.au3
         
