@@ -42,5 +42,5 @@ jobs:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         prerelease: true
         files: |
-          ${{runner.workspace}}/GW-BlockScrims/bin/RelWithDebInfo/
+          ${{runner.workspace}}/GW-BlockScrims/bin/RelWithDebInfo/*
         
