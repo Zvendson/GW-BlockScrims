@@ -41,8 +41,8 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         path: |
-          ${{runner.workspace}}/GWToolboxpp/bin/Release/
-          ${{runner.workspace}}/GWToolboxpp/injector.au3
+          ${{runner.workspace}}/GW-BlockScrims/bin/Release/
+          ${{runner.workspace}}/GW-BlockScrims/injector.au3
         if-no-files-found: error
 
     - name: Release
@@ -50,5 +50,5 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
-          ${{runner.workspace}}/GWToolboxpp/bin/Release/BlockScrims.dll
+          ${{runner.workspace}}/GW-BlockScrims/bin/Release/BlockScrims.dll
         
