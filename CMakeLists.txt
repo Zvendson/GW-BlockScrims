@@ -6,10 +6,13 @@ endif()
 
 project(BlockScrims)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+
+# Outputs dll, exe, and pdb into a /bin/config folder
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin/")
 
 add_compile_definitions("NOMINMAX")
 add_compile_definitions("WIN32_LEAN_AND_MEAN")
@@ -31,8 +34,7 @@ target_compile_options(BlockScrims PRIVATE /W4 /WX /ZI)
 
 target_include_directories(BlockScrims PUBLIC 
     "include/"
-    "src/"
-    )
+    "src/")
 
 include(directx)
 include(imgui)
