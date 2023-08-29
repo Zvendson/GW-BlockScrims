@@ -5,6 +5,11 @@
 #include <GWCA/Managers/ChatMgr.h>
 #include <GWCA/Managers/MemoryMgr.h>
 #include <GWCA/Managers/RenderMgr.h>
+#include <ImGuiTheme.h>
+
+#include <Roboto-Bold.embed>
+#include <Roboto-Italic.embed>
+#include <Roboto-Regular.embed>
 
 namespace
 {
@@ -12,6 +17,7 @@ namespace
     static DrawCallback* pDrawCallback = nullptr;
     static bool bImGuiInitialized = false;
     static bool bShutdown = false;
+    static std::unordered_map<std::string, ImFont*> s_Fonts;
 }
 
 
@@ -179,6 +185,7 @@ static void DrawInternal(IDirect3DDevice9* device)
         OldWndProc = SetWindowLongPtr(hWnd, GWL_WNDPROC, reinterpret_cast<long>(SafeWndProc));
 
         ImGui::CreateContext();
+        UI::SetImGuiTheme();
         ImGui_ImplWin32_Init(hWnd);
         ImGui_ImplDX9_Init(device);
 
@@ -186,6 +193,15 @@ static void DrawInternal(IDirect3DDevice9* device)
         io.MouseDrawCursor = false;
         io.ConfigWindowsMoveFromTitleBarOnly = true;
         initialized = true;
+
+        // Load default font
+        ImFontConfig fontConfig;
+        fontConfig.FontDataOwnedByAtlas = false;
+        ImFont* robotoFont = io.Fonts->AddFontFromMemoryTTF((void*)g_RobotoRegular, sizeof(g_RobotoRegular), 17.0f, &fontConfig);
+        s_Fonts["Default"] = robotoFont;
+        s_Fonts["Bold"] = io.Fonts->AddFontFromMemoryTTF((void*)g_RobotoBold, sizeof(g_RobotoBold), 17.0f, &fontConfig);
+        s_Fonts["Italic"] = io.Fonts->AddFontFromMemoryTTF((void*)g_RobotoItalic, sizeof(g_RobotoItalic), 17.0f, &fontConfig);
+        io.FontDefault = robotoFont;
     }
 
     ImGui_ImplDX9_NewFrame();
