@@ -9,8 +9,8 @@ A simple .dll for Guild Wars to block duplicate scrimmages and an explicit check
 ### **Build**
 1. Navigate to your favourit development directory. E.g.: `D:\dev\cpp\gw\`
 2. Open `Git Bash` by rightclicking in the empty space.
-3. Clone repo with: ```git clone https://github.com/Zvendson/GWCA-Project-Template```
-4. Navigate to the new folder: `cd GWCA-Project-Template`
+3. Clone repo with: ```git clone https://github.com/Zvendson/GW-BlockScrims```
+4. Navigate to the new folder: `cd GW-BlockScrims`
 5. Build Project: ```cmake -A Win32 -B build```<br>
 (No spaces, no quotes)
 6. Open the project: ```cmake --open build```
