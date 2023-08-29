@@ -42,7 +42,7 @@ jobs:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         prerelease: true
         files: |
-          ${{runner.workspace}}/GW-BlockScrims/bin/RelWithDebInfo/*.dll
-          ${{runner.workspace}}/GW-BlockScrims/bin/RelWithDebInfo/*.pdb
-          ${{runner.workspace}}/GW-BlockScrims/injector.au3
+          ${{runner.workspace}}/bin/RelWithDebInfo/*.dll
+          ${{runner.workspace}}/bin/RelWithDebInfo/*.pdb
+          ${{runner.workspace}}/injector.au3
         
