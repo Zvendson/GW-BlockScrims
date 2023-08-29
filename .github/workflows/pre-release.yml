@@ -41,6 +41,6 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
-          ${{runner.workspace}}/GW-BlockScrims/bin/RelWithDebInfo/*
-          ${{runner.workspace}}/GW-BlockScrims/injector.au3
+          ${{runner.workspace}}/bin/RelWithDebInfo/*
+          ${{runner.workspace}}/injector.au3
         
